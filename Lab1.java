@@ -45,7 +45,7 @@ public class Lab1
 			for (int j = 0;j<20;j++)
 			{
 				d2[i][j] = calculateElementValue(d1[i],x[j]);
-				System.out.printf("%.5f",d2[i][j]);
+				System.out.printf("%10.5f",d2[i][j]);
 				System.out.print(" ");
 			}
 			System.out.println();
