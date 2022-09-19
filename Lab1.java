@@ -1,12 +1,11 @@
-package ru.itmo.prog.samples;
-
-
 public class Lab1
 {
 	
 	public static double generateRandomNumber(double start,double end)
 	{
-		return Math.random()*(end-start)+start;
+		double res =  Math.random()*(end-start+1)+start;
+		if (res>end) return end;
+		else return res;
 	}
 	
 	public static double calculateElementValue(int di, double x)
