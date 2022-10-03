@@ -1,23 +1,26 @@
-﻿package com.company.movements;
+package com.company.movements;
 
 import ru.ifmo.se.pokemon.*;
 
-public class Bulldoze extends PhysicalMove
+public class Crunch extends PhysicalMove
 {
-	public Bulldoze()
+	public Crunch()
 	{
-		super(Type.GROUND,60,100);
+		super(Type.DARK,80,100);
 	}
 	
 	@Override
-	protected String describe()
+	public String describe()
 	{
-		return "использует Bulldoze";
+		return "использует Crunch";
 	}
 	
 	@Override
 	protected void applyOppEffects(Pokemon p)
 	{
-		p.setMod(Stat.SPEED,-1);
+		if (Math.random()<=0.2) 
+		{
+			p.setMod(Stat.DEFENSE,-1);
+		}
 	}
 }
