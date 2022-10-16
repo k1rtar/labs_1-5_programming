@@ -1,0 +1,2 @@
+Main-class: com.company.project.Main
+Class-Path: ../../libs/Pokemon.jar ../libs/project.jar
