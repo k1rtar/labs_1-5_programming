@@ -2,9 +2,9 @@ package com.kirtar.lab_5.commands;
 
 import java.util.LinkedList;
 
-import com.kirtar.lab_5.commands.*;
-import com.kirtar.lab_5.commands.Command;
-import com.kirtar.lab_5.commands.Receiver;
+/**
+ * Класс Invoker, отвечает за вызов команд
+ */
 
 public class Invoker
 {
@@ -18,10 +18,12 @@ public class Invoker
         }
         commandList.clear();
     }
+
     public void executeFirstCommand(LinkedList<Command> commandList)
     {
-        commandList.getFirst().execute();
+        Command current = commandList.getFirst();
         commandList.removeFirst();
+        current.execute();
     }
 
     public void executeLastCommand(LinkedList<Command> commandList)
@@ -30,30 +32,6 @@ public class Invoker
         commandList.removeLast();
     }
 
-    /*public void addElement()
-    {
-        add.execute();
-    }
-
-    public void clearTheCollection()
-    {
-        clear.execute();
-    }
-
-    public void help()
-    {
-        help.execute();
-    }
-
-    public void showCollectionItems()
-    {
-        show.execute();
-    }
-
-    public void showHistory()
-    {
-        history.execute();
-    }*/
 
 
 }

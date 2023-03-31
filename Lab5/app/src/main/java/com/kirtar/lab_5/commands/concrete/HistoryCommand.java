@@ -4,6 +4,10 @@ import com.kirtar.lab_5.commands.Command;
 import com.kirtar.lab_5.commands.Receiver;
 import java.util.LinkedList;
 
+/**
+ * вывести последние 11 команд (без их аргументов)
+ */
+
 public class HistoryCommand implements Command{
 
     private Receiver receiver;

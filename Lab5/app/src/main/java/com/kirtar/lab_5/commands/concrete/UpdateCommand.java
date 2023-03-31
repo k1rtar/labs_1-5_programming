@@ -4,6 +4,10 @@ import com.kirtar.lab_5.commands.Command;
 import com.kirtar.lab_5.commands.Receiver;
 import com.kirtar.lab_5.models.Flat;
 
+/**
+ * обновить значение элемента коллекции, id которого равен заданному
+ */
+
 public class UpdateCommand implements Command
 {
     private Receiver receiver;

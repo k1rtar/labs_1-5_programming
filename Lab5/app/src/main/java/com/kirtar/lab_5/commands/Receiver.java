@@ -1,18 +1,28 @@
 package com.kirtar.lab_5.commands;
-import java.util.Queue;
+
 import java.util.PriorityQueue;
-import java.util.Collection;
 import java.util.LinkedList;
+
+import com.kirtar.lab_5.iomanagers.InputConsoleManager;
+import com.kirtar.lab_5.Main;
 import com.kirtar.lab_5.models.Flat;
-//import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kirtar.lab_5.models.View;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.databind.*;
-//import com.fasterxml.jackson.dataformat.*;
 import com.fasterxml.jackson.datatype.jsr310.*;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
-//import com.kirtar.lab_5.iomanagers.*;
+import java.io.File;
+import java.util.Scanner;
+import java.io.FileNotFoundException;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.HashSet; 
 
+/**
+ * Реализация всех команд, класс-исполнитель
+ */
 public class Receiver
 {
     private PriorityQueue<Flat> collection;
@@ -30,6 +40,7 @@ public class Receiver
     public void clear()
     {
         collection.clear();
+        System.out.println("CLEAR");
     }
 
     public void help()
@@ -59,6 +70,7 @@ public class Receiver
     public void remove_first()
     {
         collection.poll();
+        System.out.println("REMOVE_FIRST");
     }
 
     public void save(PriorityQueue<Flat> collection, String path)
@@ -79,6 +91,7 @@ public class Receiver
                       new FileOutputStream(path));
         bufferedOutputStream.write(result.getBytes());
         bufferedOutputStream.close();
+        System.out.println("SAVE");
     }
     catch (Exception e)
     {
@@ -108,6 +121,7 @@ public class Receiver
 
             }
         }
+        System.out.println("UPDATE");
     }
     public void removeById(Long id)
     {
@@ -120,7 +134,87 @@ public class Receiver
                 break;
             }
         }
+        System.out.println("REMOVE_BY_ID");
     }
 
+    public void execute_script(String filename, InputConsoleManager runner)
+    {
+        try{
+        Scanner scanner = new Scanner(new File(filename));
+        
+        runner.run(scanner);
+        System.out.println("EXECUTE_SCRIPT");
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("Ошибка! Файл("+filename+") не найден");
+        }
+    }
+
+    public void info()
+    {
+        System.out.println("---Информация о коллекции---");
+        System.out.println("Тип коллекции: "+collection.getClass().toString());
+        System.out.println("Дата инициализации: "+Main.date);
+        System.out.println("Количество элементов: "+collection.size());
+    }
+
+    public void remove_lower(Flat flat)
+    {
+        Iterator<Flat> it = collection.iterator();
+        while (it.hasNext())
+        {
+            Flat nextFlat = it.next();
+            if (flat.getNumberOfRooms()>nextFlat.getNumberOfRooms())
+            {
+                it.remove();
+            }
+        }
+        System.out.println("REMOVE_LOWER");
+        
+    }
+
+    public void group_counting_by_area()
+    {
+
+        Map<Double,Integer> dictionary = new HashMap<Double,Integer>();
+        for(Flat el: collection)
+        {
+            dictionary.put(el.getArea(),0);
+        }
+        for(Flat el: collection)
+        {
+            dictionary.put(el.getArea(),dictionary.get(el.getArea())+1);
+        }
+        for(Map.Entry<Double, Integer> item : dictionary.entrySet()){
+         
+            System.out.printf("Area: %f  Amount of elements: %d \n", item.getKey(), item.getValue());
+        }
+    }
+
+    public void filter_starts_with_name(String name)
+    {
+        for (Flat el:collection)
+        {
+            if (el.getName().substring(0,name.length()).equals(name))
+            {
+                System.out.println(el);
+            }
+        }
+        System.out.println("FILTER_STARTS_WITH_NAME");
+    }
+
+    public void print_unique_view()
+    {
+        HashSet<View> viewSet = new HashSet<View>();
+        for (Flat el:collection)
+        {
+            viewSet.add(el.getView());
+        }
+        for (View el:viewSet)
+        {
+            System.out.println(el);
+        }
+        System.out.println("PRINT_UNIQUE_VIEW");
+    }
 
 }

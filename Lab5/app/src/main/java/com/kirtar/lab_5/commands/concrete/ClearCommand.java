@@ -4,6 +4,10 @@ import com.kirtar.lab_5.commands.Command;
 import com.kirtar.lab_5.commands.Receiver;
 
 
+/**
+ * очистить коллекцию
+ */
+
 public class ClearCommand implements Command{
 
     private Receiver receiver;

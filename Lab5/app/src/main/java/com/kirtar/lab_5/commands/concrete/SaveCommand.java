@@ -6,6 +6,10 @@ import com.kirtar.lab_5.models.Flat;
 import com.kirtar.lab_5.iomanagers.InputFileManager;
 import java.util.PriorityQueue;
 
+/**
+ * сохранить коллекцию в файл
+ */
+
 public class SaveCommand implements Command
 {
     private PriorityQueue<Flat> collection;

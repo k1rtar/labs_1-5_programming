@@ -4,22 +4,21 @@ import com.kirtar.lab_5.commands.Command;
 import com.kirtar.lab_5.commands.Receiver;
 
 /**
- * удалить элемент из коллекции по его id
+ * вывести уникальные значения поля view всех элементов в коллекции
  */
 
-public class RemoveByIdCommand implements Command
-{
+public class PrintUniqueViewCommand implements Command{
+
     private Receiver receiver;
-    private Long id;
-    public RemoveByIdCommand(Receiver receiver, Long id)
+
+    public PrintUniqueViewCommand(Receiver receiver)
     {
         this.receiver = receiver;
-        this.id = id;
     }
+
     @Override
     public void execute()
     {
-        receiver.removeById(id);
+        receiver.print_unique_view();
     }
-
 }

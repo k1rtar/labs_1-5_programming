@@ -4,18 +4,16 @@ import java.util.Scanner;
 
 import com.kirtar.lab_5.models.*;
 
+/**
+ * Парсер для команд с параметром типа Flat
+ */
 
 public class CommandParser
 {
 
     public Flat ParseFlatObject(Scanner scanner)
     {
-        //Long id=0L;
         String name="";int x=0; float y=0;
-        //System.out.println("Введите id: ");
-        //String input = scanner.nextLine();
-        //try{id = Long.parseLong(input);}catch (Exception e){System.out.println("Ошибка! Значение не может быть загружено в поле id!");return null;}
-        //if (id==null){System.out.println("Ошибка! Поле id не может быть null!"); return null;}
         System.out.println("Введите name: ");
         String input = scanner.nextLine();
         try{name = input;} catch (Exception e){System.out.println("Ошибка! Значение не может быть загружено в поле name!"); return null;}
@@ -30,7 +28,6 @@ public class CommandParser
         try{y = Float.parseFloat(input);} catch(Exception e){System.out.println("Ошибка! Значение не может быть загружено в поле y!"); return null;}
         if (y<=-150){System.out.println("Ошибка! Значение поля y должно быть больше -150"); return null;}
         double area=0; int numberOfRooms=0; long numberOfBathrooms=0;
-        //View view, Transport transport, House house
         System.out.println("Введите area: ");
         input = scanner.nextLine();
         try{area = Double.parseDouble(input);} catch(Exception e){System.out.println("Ошибка! Значение не может быть загружено в поле area!"); return null;}
@@ -44,12 +41,12 @@ public class CommandParser
         try{numberOfBathrooms= Long.parseLong(input);} catch(Exception e){System.out.println("Ошибка! Значение не может быть загружено в поле numberOfBathrooms!"); return null;}
         if (numberOfBathrooms<=0){System.out.println("Ошибка! Значение поля numberOfBathrooms должно быть больше 0"); return null;}
         View view=View.NORMAL; Transport transport=Transport.NORMAL;
-        System.out.println("Введите view: ");
+        System.out.println("Введите view(STREET,YARD,BAD,NORMAL,GOOD): ");
         input = scanner.nextLine();
         if (input.isEmpty()){view=null;}
         else{
         try{view= View.valueOf(input);} catch(Exception e){System.out.println("Ошибка! Значение не может быть загружено в поле view!"); return null;}}
-        System.out.println("Введите transport:");
+        System.out.println("Введите transport(FEW,NONE,LITTLE,NORMAL,ENOUGH): ");
         input = scanner.nextLine();
         try{transport= Transport.valueOf(input);} catch(Exception e){System.out.println("Ошибка! Значение не может быть загружено в поле transport!"); return null;}
         if (transport==null || input.isEmpty()){System.out.println("Ошибка! Поле transport не может быть null!"); return null;}

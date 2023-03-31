@@ -1,39 +1,37 @@
 package com.kirtar.lab_5.models;
 
-import java.util.Objects;
+
 import java.time.ZonedDateTime;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.ZoneId;
 import com.fasterxml.jackson.annotation.JsonProperty;  
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.datatype.jsr310.*;
-import com.kirtar.lab_5.models.IdFlat;
+
 
 public class Flat implements Comparable<Flat>
 {
     
-    private Long id = ++IdFlat.lastId; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    private Long id = ++IdFlat.lastId; 
     @JsonProperty("name")
-    private String name; //Поле не может быть null, Строка не может быть пустой
+    private String name; 
     @JsonProperty("Coordinates")
-    private Coordinates coordinates; //Поле не может быть null
+    private Coordinates coordinates; 
     LocalDateTime myLocalDateTime = LocalDateTime.of(2023, Month.MARCH, 1, 20, 55, 30);
     ZoneId vnZoneId = ZoneId.of("Europe/Moscow");
-    private ZonedDateTime creationDate =  ZonedDateTime.of(myLocalDateTime, vnZoneId); //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    private ZonedDateTime creationDate =  ZonedDateTime.of(myLocalDateTime, vnZoneId); 
     @JsonProperty("area")
-    private double area; //Значение поля должно быть больше 0
+    private double area; 
     @JsonProperty("numberOfRooms")
-    private int numberOfRooms; //Значение поля должно быть больше 0
+    private int numberOfRooms; 
     @JsonFormat(shape = JsonFormat.Shape.NUMBER)
-    private long numberOfBathrooms; //Значение поля должно быть больше 0
+    private long numberOfBathrooms; 
     @JsonProperty("view")
-    private View view; //Поле может быть null
+    private View view; 
     @JsonProperty("transport")
-    private Transport transport; //Поле не может быть null
+    private Transport transport; 
     @JsonProperty("house")
-    private House house; //Поле не может быть null
+    private House house; 
 
     public Flat()
     {
@@ -64,17 +62,6 @@ public class Flat implements Comparable<Flat>
         this.view = view;
         this.transport = transport;
         this.house = house;
-        /*if (id!=null){this.id = id;} else{this.id=1L;}
-        if(!name.equals("") || name!=null){this.name = name;} else{this.name="DefaultFlat";}
-        if (coordinates != null && coordinates.getX()>-232 &&
-         coordinates.getY()>-150){this.coordinates = coordinates;} 
-         else {this.coordinates = new Coordinates(1,1);}
-        if(area>0){this.area = area;} else {this.area=1;}
-        if (numberOfRooms>0){this.numberOfRooms = numberOfRooms;} else{this.numberOfRooms=1;}
-        if (numberOfBathrooms>0){this.numberOfBathrooms = numberOfBathrooms;} else{this.numberOfBathrooms=1;}
-        if (view!=null){this.view = view;} else {this.view = View.NORMAL;}
-        if (transport!=null){this.transport=transport;} else {this.transport = Transport.NORMAL;}
-        if (house!=null){this.house=house;} else {this.house=new House("DefaultHouse",1L,1);}*/
     }
     public Long getId() 
     {
@@ -177,7 +164,8 @@ public class Flat implements Comparable<Flat>
     @Override 
     public String toString()
     {
-    	return String.format("Flat(id=%d,name=%s,coordinates=%s)",id,name,coordinates.toString());
+        return String.format("Flat(id=%d,name=%s,coordinates=%s,area=%f,numberOfRooms=%d,numberOfBathrooms=%d,view=%s,transport=%s,house=(%s),creationDate = %s)",
+        id,name,coordinates.toString(),area,numberOfRooms,numberOfBathrooms,view,transport,house.toString(),creationDate);
     }
 
 

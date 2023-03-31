@@ -1,4 +1,3 @@
-//чтение из файла и загрузка в коллекцию
 package com.kirtar.lab_5.iomanagers;
 
 import java.io.BufferedReader;
@@ -12,11 +11,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException; 
 import com.fasterxml.jackson.databind.*; 
 import com.fasterxml.jackson.datatype.jsr310.*;
-
+import java.io.FileNotFoundException;
 import com.kirtar.lab_5.models.Flat;
-import com.kirtar.lab_5.models.Coordinates;
 import com.kirtar.lab_5.models.IdFlat;
 
+/**
+ * Парсинг файла XML в коллекцию 
+ */
 
 public class InputFileManager
 {
@@ -31,6 +32,7 @@ public class InputFileManager
             String responsetmp = new String();
             for (String line; (line = br.readLine()) != null; responsetmp += line);
             String response = responsetmp.replaceAll(" ","");
+            br.close();
             System.out.println(response);    
             if (responsetmp.indexOf("creationDate")!=-1)
             {
@@ -73,14 +75,16 @@ public class InputFileManager
         }
 
         catch (JsonMappingException e) {  
-            // TODO Auto-generated catch block  
-            e.printStackTrace();  
-        } catch (JsonProcessingException e) {  
-            // TODO Auto-generated catch block  
-            e.printStackTrace();  
+            System.out.println("Ошибка загрузки в коллекцию. Проверьте правильность данных в файле");
+        } catch (JsonProcessingException e) {    
+            System.out.println("Ошибка загрузки в коллекцию. Проверьте правильность данных в файле");
         }   
+        catch (FileNotFoundException e) {
+            System.out.println("Ошибка! Файл для загрузки данных в коллекцию не найден");
+            
+        }
         catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Ошибка загрузки в коллекцию. Проверьте правильность данных в файле");
             
         }
         System.out.println(collection.size());

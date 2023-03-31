@@ -5,23 +5,22 @@ import com.kirtar.lab_5.commands.Receiver;
 import com.kirtar.lab_5.models.Flat;
 
 /**
- * добавить новый элемент в коллекцию
+ *  удалить из коллекции все элементы, меньшие, чем заданный
  */
 
-public class AddCommand implements Command{
+public class RemoveLowerCommand implements Command{
 
     private Receiver receiver;
-    private Flat element;
-
-    public AddCommand(Receiver receiver, Flat element)
+    private Flat flat;
+    public RemoveLowerCommand(Receiver receiver,Flat flat)
     {
         this.receiver = receiver;
-        this.element = element;
+        this.flat = flat;
     }
 
     @Override
     public void execute()
     {
-        receiver.add(element);
+        receiver.remove_lower(flat);
     }
 }

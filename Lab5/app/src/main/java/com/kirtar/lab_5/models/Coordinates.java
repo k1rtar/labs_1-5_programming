@@ -3,9 +3,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Coordinates {
     @JsonProperty("x")
-    private int x; //Значение поля должно быть больше -232
+    private int x; 
     @JsonProperty("y")
-    private float y; //Значение поля должно быть больше -150
+    private float y; 
     public Coordinates()
     {
         super();

@@ -3,6 +3,9 @@ package com.kirtar.lab_5.commands.concrete;
 import com.kirtar.lab_5.commands.Command;
 import com.kirtar.lab_5.commands.Receiver;
 
+/**
+ * удалить первый элемент из коллекции
+ */
 
 public class RemoveFirstCommand implements Command{
 
