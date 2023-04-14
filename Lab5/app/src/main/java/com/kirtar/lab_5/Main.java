@@ -1,6 +1,6 @@
 package com.kirtar.lab_5;
 
-
+import java.util.Queue;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 import com.kirtar.lab_5.commands.*;
@@ -22,11 +22,11 @@ public class Main
     public static void main(String[] args)
     {
         Scanner scanner = new Scanner(System.in);
-        InputFileManager inpman = new InputFileManager();
+        InputFileManager inputManager = new InputFileManager();
         LinkedList<String> lastCommands = new LinkedList<String>();
         LinkedList<Command> commandList = new LinkedList<Command>();
-        PriorityQueue<Flat> collection = new PriorityQueue<Flat>();
-        try{collection = inpman.XMLtoFlat(args[0]);}
+        Queue<Flat> collection = new PriorityQueue<Flat>();
+        try{collection = inputManager.XMLtoFlat(args[0]);}
         catch (Exception e){System.out.println("Ошибка загрузки файла! Проверьте правильность указанного пути к файлу(путь должен быть абсолютным)");}
         Receiver receiver = new Receiver(collection);
         Invoker invoker = new Invoker();

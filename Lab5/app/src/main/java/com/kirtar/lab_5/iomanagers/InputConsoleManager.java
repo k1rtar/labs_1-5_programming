@@ -1,7 +1,7 @@
 package com.kirtar.lab_5.iomanagers;
 
-import java.util.PriorityQueue;
 
+import java.util.Queue;
 import java.util.Scanner;
 import java.util.LinkedList;
 
@@ -16,14 +16,14 @@ import com.kirtar.lab_5.parsers.*;
  */
 public class InputConsoleManager
 {
-        public PriorityQueue<Flat> collection;
+        public Queue<Flat> collection;
         public LinkedList<String> lastCommands;
         public Receiver receiver;
         public LinkedList<Command> commandList;
         public Invoker invoker;
         public CommandParser commandParser;
         public LinkedList<String> executedFiles = new LinkedList<String>();
-        public InputConsoleManager(PriorityQueue<Flat> collection,LinkedList<String> lastCommands,Receiver receiver,
+        public InputConsoleManager(Queue<Flat> collection,LinkedList<String> lastCommands,Receiver receiver,
         LinkedList<Command> commandList,Invoker invoker,CommandParser commandParser)
         {
             this.collection = collection;

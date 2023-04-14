@@ -1,6 +1,6 @@
 package com.kirtar.lab_5.commands;
 
-import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.LinkedList;
 
 import com.kirtar.lab_5.iomanagers.InputConsoleManager;
@@ -25,9 +25,9 @@ import java.util.HashSet;
  */
 public class Receiver
 {
-    private PriorityQueue<Flat> collection;
+    private Queue<Flat> collection;
 
-    public Receiver(PriorityQueue<Flat> collection)
+    public Receiver(Queue<Flat> collection)
     {
         this.collection = collection;
     }
@@ -73,7 +73,7 @@ public class Receiver
         System.out.println("REMOVE_FIRST");
     }
 
-    public void save(PriorityQueue<Flat> collection, String path)
+    public void save(Queue<Flat> collection, String path)
     {
         String result = "";
         try{

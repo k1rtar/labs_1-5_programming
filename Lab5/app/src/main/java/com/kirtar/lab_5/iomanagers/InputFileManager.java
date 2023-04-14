@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
@@ -22,9 +23,9 @@ import com.kirtar.lab_5.models.IdFlat;
 public class InputFileManager
 {
     public static String path;
-    public PriorityQueue<Flat> XMLtoFlat(String pathValue) 
+    public Queue<Flat> XMLtoFlat(String pathValue) 
     {
-        PriorityQueue<Flat> collection = new PriorityQueue<Flat>();
+        Queue<Flat> collection = new PriorityQueue<Flat>();
         try {
             path = pathValue;
             FileInputStream inputFile = new FileInputStream(path);
@@ -75,8 +76,10 @@ public class InputFileManager
         }
 
         catch (JsonMappingException e) {  
+            e.printStackTrace();
             System.out.println("Ошибка загрузки в коллекцию. Проверьте правильность данных в файле");
-        } catch (JsonProcessingException e) {    
+        } catch (JsonProcessingException e) { 
+            e.printStackTrace();   
             System.out.println("Ошибка загрузки в коллекцию. Проверьте правильность данных в файле");
         }   
         catch (FileNotFoundException e) {

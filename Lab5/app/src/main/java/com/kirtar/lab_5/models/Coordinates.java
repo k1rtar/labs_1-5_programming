@@ -3,19 +3,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Coordinates {
     @JsonProperty("x")
-    private int x; 
+    private Float x; 
     @JsonProperty("y")
-    private float y; 
+    private int y; 
     public Coordinates()
     {
         super();
     }
-    public Coordinates(int x, float y)
+    public Coordinates(Float x, int y)
     {
         this.x = x;
         this.y = y;
     }
-    public int getX()
+    public Float getX()
     {
         return x;
     }
@@ -23,18 +23,18 @@ public class Coordinates {
     {
         return y;
     }
-    public void setX(int x)
+    public void setX(float x)
     {
         this.x = x;
     }
-    public void setY(float y)
+    public void setY(int y)
     {
         this.y = y;
     }
     @Override 
     public String toString()
     {
-    	return String.format("(x=%d,y=%f)",x,y);
+    	return String.format("(x=%f,y=%d)",x,y);
     }   
     
 }
